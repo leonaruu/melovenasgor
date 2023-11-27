@@ -9,9 +9,11 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <style>
-        #map {
-            width: 976px;
-            height: 636px;
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
         }
         </style>
         <title></title>
@@ -67,10 +69,6 @@
                         <td>' + (feature.properties['Foto'] !== null ? autolinker.link(feature.properties['Foto'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Photo</th>\
-                        <td>' + (feature.properties['Photo'] !== null ? '<img src="images/' + String(feature.properties['Photo']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">Ranking QS</th>\
                         <td>' + (feature.properties['Deskripsi Univ_QS WUR'] !== null ? autolinker.link(feature.properties['Deskripsi Univ_QS WUR'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -81,6 +79,10 @@
                     <tr>\
                         <th scope="row">Fakultas</th>\
                         <td>' + (feature.properties['Deskripsi Univ_Fakultas'] !== null ? autolinker.link(feature.properties['Deskripsi Univ_Fakultas'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                 <tr>\
+                        <th scope="row">Photo</th>\
+                        <td>' + (feature.properties['Photo'] !== null ? '<img src="images/' + String(feature.properties['Photo']).replace(/[\\\/:]/g, '_').trim() + '" '+ 'class=popupImage' +'>' : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
